@@ -15,8 +15,8 @@
 <div class="w-72 bg-white rounded flex">
     <canvas id="myChart1" width="300" height="400"></canvas>
 </div>
-<div class="w-72 bg-white rounded ">
-    <canvas id="myChart2" width="300" height="400"></canvas>
+<div class=" bg-white rounded ">
+    <canvas id="myChart2" width="auto" height="auto"></canvas>
 </div>
 
 </body>

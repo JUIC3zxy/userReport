@@ -50,7 +50,9 @@ class UserController extends Controller
         $startDate = $request->query('start_date');
         $endDate = $request->query('end_date');
 
+        //get users within the time range
         $users = NewUser::whereBetween('start_date', [$startDate, $endDate])->get();
+        //get number of verified users
         $verifiedCount=$users->where('verified',1)->count();
         $unverifiedCount=$users->where('verified',0)->count();
         
@@ -58,10 +60,9 @@ class UserController extends Controller
         $data_verified_user = [$verifiedCount, $unverifiedCount];
         $monthly_data=$this->getMonthlyUserData($users);
 
-        $labels_monthly=  $monthly_data->keys();
-        $counts_monthly=  $monthly_data->values();
+
 
         //pass data to usersChart
-        return view('usersChart', compact('users','labels_verified_user','data_verified_user' ,'startDate', 'endDate','counts_monthly','labels_monthly','monthly_data'));
+        return view('usersChart', compact('users','labels_verified_user','data_verified_user' ,'startDate', 'endDate','monthly_data'));
     }
 }
